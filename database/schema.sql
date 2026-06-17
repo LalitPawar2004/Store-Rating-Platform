@@ -38,9 +38,9 @@ CREATE TABLE ratings (
 
 -- Seed data
 INSERT INTO users (name, email, password_hash, address, role) VALUES
-('System Administrator Account', 'admin@platform.test', '$2a$12$KIXnC0e1YqQe4mGzQZQeOu7vQ9bYw8yXyXyXyXyXyXyXyXyXyXyXy', 'Pune, Maharashtra, India', 'admin'),
-('Normal User For Testing Purpose', 'user@test.com', '$2a$12$KIXnC0e1YqQe4mGzQZQeOu7vQ9bYw8yXyXyXyXyXyXyXyXyXyXyXy', 'Pune, Maharashtra', 'user'),
-('Store Owner Demo Account Here', 'owner@test.com', '$2a$12$KIXnC0e1YqQe4mGzQZQeOu7vQ9bYw8yXyXyXyXyXyXyXyXyXyXyXy', 'Mumbai, Maharashtra', 'owner');
+('System Administrator Account', 'admin@platform.test', 'PASTE_HASH_HERE', 'Pune, Maharashtra, India', 'admin'),
+('Normal User For Testing Purpose', 'user@test.com', 'PASTE_HASH_HERE', 'Pune, Maharashtra', 'user'),
+('Store Owner Demo Account Here', 'owner@test.com', 'PASTE_HASH_HERE', 'Mumbai, Maharashtra', 'owner');
 
 -- Password for all seeds is Admin@123 (replace hash in production)
 

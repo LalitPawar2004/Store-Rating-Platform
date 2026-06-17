@@ -42,6 +42,22 @@ router.get('/users', async (req,res)=>{
   res.json(rows);
 });
 
+router.get('/users/:id', async (req,res)=>{
+  const { id } = req.params;
+  const [rows] = await pool.query('SELECT id,name,email,address,role,created_at FROM users WHERE id=?', [id]);
+  const user = rows[0];
+  if(!user) return res.status(404).json({error:'Not found'});
+  if(user.role==='owner'){
+    const [[avg]] = await pool.query(
+      `SELECT COALESCE(AVG(r.rating),0) as ownerRating
+       FROM ratings r JOIN stores s ON r.store_id=s.id
+       WHERE s.owner_id=?`, [id]
+    );
+    user.ownerRating = Number(avg.ownerRating).toFixed(2);
+  }
+  res.json(user);
+});
+
 router.get('/stores', async (req,res)=>{
   const {name='', email='', address='', sort='name', order='asc'} = req.query;
   const sortable = ['name','email','address','rating'];
